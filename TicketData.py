@@ -28,15 +28,4 @@ class TicketData():
         request_string_1 = f'https://query1.finance.yahoo.com/v7/finance/download/{self.name}?period1={self.initial_date_standard}'
         request_string_2 = f'&period2={self.final_date_standard}&interval={self.sampling_frequency}&events=history&includeAdjustedClose=true'
         request_string = request_string_1 + request_string_2
-        df = pd.read_csv(request_string)
-        print(df)
-
-tickers = ['AMD', 'FB', 'SPY', 'TSLA']
-
-for ticker in tickers:
-    time.sleep(5)
-    print(ticker)
-    objeto = TicketData(ticker, (2021,12,1), (2021,12,22), "1wk")
-    objeto.standarizing_sampling_period()
-    objeto.request_data()
-    print("Done")
+        self.data_frame = pd.read_csv(request_string)     
